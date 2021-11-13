@@ -30,19 +30,32 @@ A VL53L1X sensor is placed at the abdomen level of the user. The sensor calculat
 ### Algorithm Implementation:
 
 Condition →True
+
 Counter  → 0
+
 Initial Value → Distance(Value read from the sensor)
+
 Sleep for 2 seconds
+
 While Condition is True:
-         Reading Value → Distance(Value read from the Sensor)
+
+         Reading Value -> Distance(Value read from the Sensor)
+         
          If  Absolute(Initial Value - Reading Value) is less than 10 cm //Readings are consistent
+         
                            If counter == 6  // To make sure that values are consistent for some time
-                                     Condition  → False
+                           
+                                     Condition -> False
+                                     
                            Else
+                           
                                      Counter = Counter + 1
+                                     
          Else    
-               Initial Value  → Reading Value   
-               Counter  → 0   
+         
+               Initial Value  -> Reading Value   
+               
+               Counter  -> 0   
 The above algorithm indicates that the sensor takes a couple of seconds to configure the initial reference value to a particular number through which the uneven surfaces are detected based on the difference between the reference value as mentioned in [10] and the subsequent values read by the sensor . This configuration is done based on the height of the user. This reference value will be constant until the user resets the system. This value is basically the  distance measured from the user's abdomen level to the ground at a particular angle, making a hypotenuse from the user’s abdomen to a point on the ground. This reference value is considered as ‘d’. 
 
 ![alt text](https://github.com/saisravan549/Blinds_Apron/blob/main/images/Screen%20Shot%202021-11-12%20at%207.15.58%20PM.png)
